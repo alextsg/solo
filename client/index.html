@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <title>Simon</title>
-    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body ng-controller = 'simonController as simon' ng-keydown='simon.keypress($event)' ng-init = 'simon.newAnswers()'>
-    <h1>Simon</h1>
+    <div id = 'simon'>Simon</div>
     <div>
-      <div class = "score"> Score: {{ simon.score }}</div>
+      <div id = 'correct' ng-show = 'simon.correct'>CORRECT!</div>
+      <div id = 'score'>Score: {{ simon.score }}</div>
       <div id = 'notready' ng-hide = 'simon.green'>NOT READY</div>
       <div id = 'ready' ng-show = 'simon.green'>READY</div>
       <h1>{{ simon.displayed }}</h1>
-      <div class = 'key' ng-repeat = 'key in simon.keys track by $index'>{{ key }}</div>
+      <div class = 'key' ng-repeat = 'key in simon.keys track by $index'>{{ simon.arrows[key] }}</div>
     </div>
-    <!--<button ng-click = "simon.newAnswers()">New Round</button> -->
-    <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="./app/app.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
   </body>
 </html>

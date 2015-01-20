@@ -14,6 +14,7 @@
       40: 'DOWN'
     };
     var green = false;
+    var correct;
 
     this.newAnswers = function(){
       console.log(this.round);
@@ -35,17 +36,17 @@
       }
       if (this.keys.length === this.round){
         if (this.compare(this.keys, this.round)){
-          console.log("correct");
+          this.correct = true;
           this.newAnswers();
         } else {
-          console.log("wrong");
+          this.correct = false;
+          this.resetGame();
         }
       }
     }
 
     this.compare = function(keys, round){ 
       console.log(keys);
-      console.log(round);
       for (var i = 0; i < keys.length; i++){
         if (keys[i] !== this.answers[i]) return false;
         else this.score++;
@@ -73,6 +74,15 @@
       var refresh = $interval(refreshAnswer.bind(this),1000);
     };
 
+    this.resetGame = function(){
+      this.keys = [];
+      this.round = 0;
+      this.answers = [];
+      this.displayed = "--";
+      this.score = 0;
+      this.newAnswers();
+      this.correct;
+    };
 
   });
 
