@@ -1,4 +1,5 @@
 # Project Name #
+Simon Says Memory Game
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -18,27 +19,36 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  Web game that tests your memory.
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Anyone who is bored and needs something to do for five minutes. Helps reinforce memorization skills.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  A simple web game similar to the electronic game Simon manufactured by Milton-Bradley where users watch for a sequence of steps shown on the screen and must replicate the sequence.
 
 ## Problem ##
   > Describe the problem your product solves.
+  Solves boredom and reinforces memorization skills.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  It's a game that doesn't take long to play and can help your brain.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  This is an MVP project.
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Just go to the page and start playing.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "This game was ok."
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  "Go to <website> to start playing."
