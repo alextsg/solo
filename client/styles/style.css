@@ -62,6 +62,11 @@ body {
   background-color: #e6e3e3;
 }
 
+.lowered {
+  position: relative;
+  top: 5px;
+}
+
 .green {
   background-color: transparent;
 }

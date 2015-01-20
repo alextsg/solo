@@ -22,19 +22,19 @@
       <!--<h1>{{ simon.displayed }}</h1>-->
       <div class = 'arrows' ng-class = '{ "green" : simon.green}'>
         <div class = 'arrow'>
-          <img ng-src = 'assets/orange.png' ng-hide = 'simon.displayed === "LEFT"' />
+          <img ng-src = 'assets/orange.png' ng-hide = 'simon.displayed === "LEFT"' ng-class = '{ "lowered" : simon.displayed === 37}' />
           <img ng-src = 'assets/left.png' ng-show = 'simon.displayed === "LEFT"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = 'assets/blue.png' ng-hide = 'simon.displayed === "UP"'/>
+          <img ng-src = 'assets/blue.png' ng-hide = 'simon.displayed === "UP"' ng-class = '{ "lowered" : simon.displayed === 38}' />
           <img ng-src = 'assets/up.png' ng-show = 'simon.displayed === "UP"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = 'assets/green.png' ng-hide = 'simon.displayed === "DOWN"'/>
+          <img ng-src = 'assets/green.png' ng-hide = 'simon.displayed === "DOWN"' ng-class = '{ "lowered" : simon.displayed === 40}'/>
           <img ng-src = 'assets/down.png' ng-show = 'simon.displayed === "DOWN"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = 'assets/red.png' ng-hide = 'simon.displayed === "RIGHT"'/>
+          <img ng-src = 'assets/red.png' ng-hide = 'simon.displayed === "RIGHT"' ng-class = '{ "lowered" : simon.displayed === 39}'/>
           <img ng-src = 'assets/right.png' ng-show = 'simon.displayed === "RIGHT"' />
         </div>
       </div>  

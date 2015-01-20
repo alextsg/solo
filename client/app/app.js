@@ -18,28 +18,36 @@
 
     this.newAnswers = function(){
       this.keys = [];
-      this.round ++;
+      this.round++;
       var length = this.round;
-      var arr = [];
       for (var i = 0; i < length; i++){
         this.answers[i] = Math.floor(Math.random()*4)+37;
       };
-      console.log(this.answers);
       this.display();
     };
+
+    this.addAnswer = function(){
+      this.keys = [];
+      this.round++;
+      this.answers.push(Math.floor(Math.random()*4)+37);
+      this.display();
+    }
 
     this.keypress = function(event){
       var key = event.which;
       if (key >= 37 && key <= 40 && this.green === true){
         this.keys.push(key);
-        this.displayed = this.arrows[key];
+        //this.displayed = this.arrows[key];
+        this.displayed = key;
+        console.log(this.displayed);
         $timeout(function(){
           this.displayed = '';
         }.bind(this),100).then(function(){
-          if (this.keys.length === this.round){
-            if (this.compare(this.keys, this.round)){
+          if (this.keys.length === this.answers.length){
+            if (this.compare(this.keys, this.answers.length)){
               this.correct = true;
-              this.newAnswers();
+              //this.newAnswers();
+              this.addAnswer();
             } else {
               this.lose();
             }
