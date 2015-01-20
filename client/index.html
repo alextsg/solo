@@ -8,11 +8,19 @@
   <body ng-controller = 'simonController as simon' ng-keydown='simon.keypress($event)' ng-init = 'simon.newAnswers()' ng-class = '{ "wrong" : !simon.correct}'>
     <div id = 'simon'>Simon</div>
     <div>
-      <div id = 'score'>Score: {{ simon.score }}</div>
-      <div id = 'notready' ng-hide = 'simon.green'>NOT READY</div>
-      <div id = 'ready' ng-show = 'simon.green'>READY</div>
+      <div id = 'button'>
+        <button id = 'newgame' ng-click = 'simon.highScores()'>High Scores</button>
+        <button id = 'newgame' ng-click = 'simon.resetGame()'>New Game</button>
+      </div>
+      <div id = 'score'>
+        <div class = 'correct' ng-show = 'simon.correct && simon.score > 0'>Correct! </div>
+        <div class = 'incorrect' ng-hide = 'simon.correct'>Incorrect! </div>
+        Score: {{ simon.score }}
+      </div>
+      <!--<div id = 'notready' ng-hide = 'simon.green'>NOT READY</div>
+      <div id = 'ready' ng-show = 'simon.green'>READY</div>-->
       <!--<h1>{{ simon.displayed }}</h1>-->
-      <div id = 'arrows'>
+      <div class = 'arrows' ng-class = '{ "green" : simon.green}'>
         <div class = 'arrow'>
           <img ng-src = 'assets/orange.png' ng-hide = 'simon.displayed === "LEFT"' />
           <img ng-src = 'assets/left.png' ng-show = 'simon.displayed === "LEFT"' />
@@ -26,13 +34,14 @@
           <img ng-src = 'assets/down.png' ng-show = 'simon.displayed === "DOWN"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = 'assets/purple.png' ng-hide = 'simon.displayed === "RIGHT"'/>
+          <img ng-src = 'assets/red.png' ng-hide = 'simon.displayed === "RIGHT"'/>
           <img ng-src = 'assets/right.png' ng-show = 'simon.displayed === "RIGHT"' />
         </div>
       </div>  
-      <div class = 'key' ng-repeat = 'key in simon.keys track by $index'>{{ simon.arrows[key] }}</div>
-      <div id = 'correct' ng-show = 'simon.correct'>CORRECT!</div>
+      <!--<div class = 'key' ng-repeat = 'key in simon.keys track by $index'>{{ simon.arrows[key] }}</div>-->
+      <!--<div id = 'correct' ng-show = 'simon.correct'>CORRECT!</div>-->
     </div>
+    <div id = 'description'>Watch and memorize the pattern, then perform the same sequence with the arrow keys.</div>
     <script type = 'text/javascript' src= 'bower_components/angular/angular.min.js'></script>
     <script type = 'text/javascript' src= 'app/app.js'></script>
   </body>

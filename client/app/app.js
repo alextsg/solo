@@ -32,15 +32,19 @@
       var key = event.which;
       if (key >= 37 && key <= 40 && this.green === true){
         this.keys.push(key);
-      }
-      if (this.keys.length === this.round){
-        if (this.compare(this.keys, this.round)){
-          this.correct = true;
-          this.newAnswers();
-        } else {
-          this.correct = false;
-          this.resetGame();
-        }
+        this.displayed = this.arrows[key];
+        $timeout(function(){
+          this.displayed = '';
+        }.bind(this),100).then(function(){
+          if (this.keys.length === this.round){
+            if (this.compare(this.keys, this.round)){
+              this.correct = true;
+              this.newAnswers();
+            } else {
+              this.lose();
+            }
+          }
+        }.bind(this));
       }
     }
 
@@ -80,7 +84,8 @@
       this.displayed = '';
       this.score = 0;
       this.newAnswers();
-      this.correct;
+      this.green = false;
+      this.correct = true;
     };
 
     this.lose = function(){

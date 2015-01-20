@@ -12,13 +12,58 @@ body {
   font-weight: bold;
 }
 
+.correct {
+  color: #69E063;
+  display: inline;
+}
+
+.incorrect {
+  color: #CC3336;
+  display: inline;
+}
+
 #score {
   text-align: center;
   font-size: 24px;
+  margin-top: 10px;
 }
 
-#arrows {
-  text-align:center;
+#button {
+  text-align: center;
+}
+
+#newgame {
+  display:inline;
+  border: 0;
+  text-align: center;
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  background: #949494;
+  padding: 10px 20px 10px 20px;
+  margin: 5px 2px 5px 2px;
+}
+
+#newgame:hover {
+  background: #c7c7c7;
+}
+
+#newgame:focus {
+  outline:0 !important;
+}
+
+.arrows {
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #e6e3e3;
+}
+
+.green {
+  background-color: transparent;
 }
 
 .arrow {
@@ -37,4 +82,9 @@ body {
 
 .wrong {
   background-color: #FFC7C7;
+}
+
+#description {
+  margin-top: 30px;
+  text-align: center;
 }
