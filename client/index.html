@@ -5,7 +5,7 @@
     <title>Simon</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
-  <body ng-controller = 'simonController as simon' ng-keydown='simon.keypress($event)' ng-init = 'simon.newAnswers()'>
+  <body ng-controller = 'simonController as simon' ng-keydown='simon.keypress($event)' ng-init = 'simon.newAnswers()' ng-class = '{ "wrong" : !simon.correct}'>
     <div id = 'simon'>Simon</div>
     <div>
       <div id = 'score'>Score: {{ simon.score }}</div>
@@ -14,26 +14,26 @@
       <!--<h1>{{ simon.displayed }}</h1>-->
       <div id = 'arrows'>
         <div class = 'arrow'>
-          <img ng-src = "assets/orange.png" ng-hide = 'simon.displayed === "LEFT"' />
-          <img ng-src = "assets/left.png" ng-show = 'simon.displayed === "LEFT"' />
+          <img ng-src = 'assets/orange.png' ng-hide = 'simon.displayed === "LEFT"' />
+          <img ng-src = 'assets/left.png' ng-show = 'simon.displayed === "LEFT"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = "assets/blue.png" ng-hide = 'simon.displayed === "UP"'/>
-          <img ng-src = "assets/up.png" ng-show = 'simon.displayed === "UP"' />
+          <img ng-src = 'assets/blue.png' ng-hide = 'simon.displayed === "UP"'/>
+          <img ng-src = 'assets/up.png' ng-show = 'simon.displayed === "UP"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = "assets/green.png" ng-hide = 'simon.displayed === "DOWN"'/>
-          <img ng-src = "assets/down.png" ng-show = 'simon.displayed === "DOWN"' />
+          <img ng-src = 'assets/green.png' ng-hide = 'simon.displayed === "DOWN"'/>
+          <img ng-src = 'assets/down.png' ng-show = 'simon.displayed === "DOWN"' />
         </div>
         <div class = 'arrow'>
-          <img ng-src = "assets/purple.png" ng-hide = 'simon.displayed === "RIGHT"'/>
-          <img ng-src = "assets/right.png" ng-show = 'simon.displayed === "RIGHT"' />
+          <img ng-src = 'assets/purple.png' ng-hide = 'simon.displayed === "RIGHT"'/>
+          <img ng-src = 'assets/right.png' ng-show = 'simon.displayed === "RIGHT"' />
         </div>
-        <div class = 'key' ng-repeat = 'key in simon.keys track by $index'>{{ simon.arrows[key] }}</div>
       </div>  
+      <div class = 'key' ng-repeat = 'key in simon.keys track by $index'>{{ simon.arrows[key] }}</div>
       <div id = 'correct' ng-show = 'simon.correct'>CORRECT!</div>
     </div>
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="app/app.js"></script>
+    <script type = 'text/javascript' src= 'bower_components/angular/angular.min.js'></script>
+    <script type = 'text/javascript' src= 'app/app.js'></script>
   </body>
 </html>

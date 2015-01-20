@@ -1,11 +1,20 @@
-#simon {
+body {
   font-family: Arial;
-  color: #4b4b4b;
+}
+
+#simon {
+  color: #969696;
   margin-left: auto;
   margin-right: auto;
   margin-top: 15px;
   text-align: center;
-  font-size: 36px;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+#score {
+  text-align: center;
+  font-size: 24px;
 }
 
 #arrows {
@@ -20,4 +29,12 @@
 
 #step {
   border: 3px solid green;
+}
+
+.key {
+  display:inline-block;
+}
+
+.wrong {
+  background-color: #FFC7C7;
 }

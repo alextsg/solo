@@ -5,7 +5,7 @@
     this.keys = [];
     this.round = 1;
     this.answers = [];
-    this.displayed = "--";
+    this.displayed;
     this.score = 0;
     this.arrows = {
       37: 'LEFT',
@@ -13,8 +13,8 @@
       39: 'RIGHT',
       40: 'DOWN'
     };
-    var green = false;
-    var correct;
+    this.green = false;
+    this.correct = true;
 
     this.newAnswers = function(){
       this.keys = [];
@@ -60,9 +60,8 @@
       var refreshAnswer = function(){
         if (counter < this.answers.length){
           this.displayed = this.arrows[this.answers[counter]];
-          //this.displayed = this.answers[counter];
           $timeout(function(){
-            this.displayed = '--';
+            this.displayed = '';
           }.bind(this),800).then(function(){
             counter++;
           });
@@ -76,13 +75,17 @@
 
     this.resetGame = function(){
       this.keys = [];
-      this.round = 0;
+      this.round = 1;
       this.answers = [];
-      this.displayed = "--";
+      this.displayed = '';
       this.score = 0;
       this.newAnswers();
       this.correct;
     };
+
+    this.lose = function(){
+      this.correct = false;
+    }
 
   });
 
