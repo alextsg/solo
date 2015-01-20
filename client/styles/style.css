@@ -8,3 +8,16 @@
   font-size: 36px;
 }
 
+#arrows {
+  text-align:center;
+}
+
+.arrow {
+  display: inline;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#step {
+  border: 3px solid green;
+}

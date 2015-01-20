@@ -3,7 +3,7 @@
 
   app.controller('simonController', function($interval, $timeout){
     this.keys = [];
-    this.round = 0;
+    this.round = 1;
     this.answers = [];
     this.displayed = "--";
     this.score = 0;
@@ -17,9 +17,8 @@
     var correct;
 
     this.newAnswers = function(){
-      console.log(this.round);
       this.keys = [];
-      this.round += 2;
+      this.round ++;
       var length = this.round;
       var arr = [];
       for (var i = 0; i < length; i++){
@@ -61,6 +60,7 @@
       var refreshAnswer = function(){
         if (counter < this.answers.length){
           this.displayed = this.arrows[this.answers[counter]];
+          //this.displayed = this.answers[counter];
           $timeout(function(){
             this.displayed = '--';
           }.bind(this),800).then(function(){
