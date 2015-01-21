@@ -1,7 +1,7 @@
 (function(){
   var app = angular.module('simonApp', []);
 
-  app.controller('simonController', function($interval, $timeout){
+  app.controller('simonController', function($http, $interval, $timeout){
     this.keys = [];
     this.round = 1;
     this.answers = [];
@@ -15,6 +15,8 @@
     };
     this.green = false;
     this.correct = true;
+    this.highscores = false;
+    this.allscores;
 
     this.newAnswers = function(){
       this.keys = [];
@@ -37,16 +39,13 @@
       var key = event.which;
       if (key >= 37 && key <= 40 && this.green === true){
         this.keys.push(key);
-        //this.displayed = this.arrows[key];
         this.displayed = key;
-        console.log(this.displayed);
         $timeout(function(){
           this.displayed = '';
         }.bind(this),100).then(function(){
           if (this.keys.length === this.answers.length){
             if (this.compare(this.keys, this.answers.length)){
               this.correct = true;
-              //this.newAnswers();
               this.addAnswer();
             } else {
               this.lose();
@@ -57,7 +56,6 @@
     }
 
     this.compare = function(keys, round){ 
-      console.log(keys);
       for (var i = 0; i < keys.length; i++){
         if (keys[i] !== this.answers[i]) return false;
         else this.score++;
@@ -98,8 +96,54 @@
 
     this.lose = function(){
       this.correct = false;
-    }
+      this.getHighScoresGG();
+    };
 
+    this.getHighScores = function(){
+      var self = this;
+      $http.get('/api/scores')
+      .success(function(data, status, headers, config){
+        self.highscores = true;
+        var sorted = data.sort(function(a,b){
+          return b.score-a.score;
+        });
+        var sliced = sorted.slice(0,10);
+        self.allscores = sliced;
+        console.log(data);
+        console.log(sorted);
+      })
+      .error(function(data, status, headers, config){
+        console.log('error on get');
+      });
+    };
+
+    this.getHighScoresGG = function(){
+      var self = this;
+      $http.get('/api/scores')
+      .success(function(data, status, headers, config){
+        var sorted = data.sort(function(a,b){
+          return b.score-a.score;
+        });
+        var sliced = sorted.slice(0,10);
+        self.allscores = sliced;
+      })
+      .error(function(data, status, headers, config){
+        console.log('error on get');
+      });
+    };
+
+    this.postHighScore = function(playername, playerscore){
+      $http.post('/api/scores/create', {name: playername, score: playerscore}).
+      success(function(data, status, headers, config) {
+        // this callback will be called asynchronously
+        // when the response is available
+      }).
+      error(function(data, status, headers, config) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        console.log('error');
+      });
+    };
   });
 
 })();

@@ -6,11 +6,53 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body ng-controller = 'simonController as simon' ng-keydown='simon.keypress($event)' ng-init = 'simon.newAnswers()' ng-class = '{ "wrong" : !simon.correct}'>
+    <div id = 'overlay' ng-show = '!simon.correct'>
+      <div id = 'modal' ng-show = '!simon.correct'>Game Over
+        <div id = 'endscore'>Your Score: {{ simon.score }}</div>
+        <div id = 'gameoverhigh'>High Scores
+          <!--
+          <table>
+            <tr ng-repeat = 'score in simon.allscores'>
+              <td>{{ score.name }}</td>
+              <td>{{ score.score }}</td> 
+            </tr>
+          </table>
+          -->
+
+          <ol id = 'orderedlist'>
+            <li class = 'gameoverscores' ng-repeat = 'score in simon.allscores'>{{ score.name }}: {{score.score}}</li>
+          </ol>
+
+        </div>
+      </div>
+        <button id = 'newgamemodal' ng-click = 'simon.resetGame()'>New Game</button>
+      </div>
+    </div>
+    <div id = 'overlay' ng-show = 'simon.highscores'>
+      <div id = 'modal' ng-show = 'simon.highscores'>High Scores
+        <table id = 'orderedlist'>
+          <tr class = 'scores' ng-repeat = 'score in simon.allscores'>
+            <td>{{ $index+1 }}</td>
+            <td>{{ score.name }}</td>
+            <td>{{ score.score }}</td> 
+          </tr>
+        </table>
+
+        <!--  
+        <ol id = 'orderedlist'>
+          <li class = 'scores' ng-repeat = 'score in simon.allscores'>{{ score.name }}: {{score.score}}</li>
+        </ol>
+        -->
+
+
+        <button id = 'newgamemodal' ng-click = 'simon.highscores = false'>Close</button>
+      </div>
+    </div>
     <div id = 'simon'>Simon</div>
     <div>
       <div id = 'button'>
-        <button id = 'newgame' ng-click = 'simon.highScores()'>High Scores</button>
-        <button id = 'newgame' ng-click = 'simon.resetGame()'>New Game</button>
+        <button class = 'newgame' ng-click = 'simon.getHighScores()'>High Scores</button>
+        <button class = 'newgame' ng-click = 'simon.resetGame()'>New Game</button>
       </div>
       <div id = 'score'>
         <div class = 'correct' ng-show = 'simon.correct && simon.score > 0'>Correct! </div>
@@ -43,6 +85,7 @@
     </div>
     <div id = 'description'>Watch and memorize the pattern, then perform the same sequence with the arrow keys.</div>
     <script type = 'text/javascript' src= 'bower_components/angular/angular.min.js'></script>
+    <script type = 'text/javascript' src= 'bower_components/angular-animate/angular-animate.min.js'></script>
     <script type = 'text/javascript' src= 'app/app.js'></script>
   </body>
 </html>
